@@ -59,6 +59,9 @@ When a child component needs some data from a parent, [pass it by props](https:/
 
 ---
 
+
+
+
 ### 4 - *aria-** and *data-** keep their dash
 
 For historical reasons, [aria-*](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) and [data-*](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) attributes are written as in HTML with dashes.
@@ -66,3 +69,14 @@ For historical reasons, [aria-*](https://developer.mozilla.org/docs/Web/Accessib
 *source: https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things*
 
 ---
+
+
+### 5 - camel case for style properties
+
+Inline `style` properties are written in camelCase. For example, HTML `<ul style="background-color: black">` would be written as `<ul style={{ backgroundColor: 'black' }}>` in your component.
+
+*source: https://react.dev/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx
+
+---
+
+
