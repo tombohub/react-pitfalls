@@ -185,7 +185,8 @@ When you write code inline, the same pitfall presents itself in a different way:
 Passing inline code like this won’t fire on click—it fires every time the component renders:
 
 ```javascript
-// This alert fires when the component renders, not when clicked!<button onClick={alert('You clicked me!')}>
+// This alert fires when the component renders, not when clicked!
+<button onClick={alert('You clicked me!')}>
 ```
 
 If you want to define your event handler inline, wrap it in an anonymous function like so:
