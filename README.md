@@ -216,5 +216,13 @@ All events propagate in React except `onScroll`, which only works on the JSX tag
 
 <br>
 
+## 12 - call hooks only at top level of component
+
+**Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks.](https://react.dev/learn/reusing-logic-with-custom-hooks)** You can’t call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it’s helpful to think of them as unconditional declarations about your component’s needs. You “use” React features at the top of your component similar to how you “import” modules at the top of your file.
+
+*source: https://react.dev/learn/state-a-components-memory#meet-your-first-hook*
+
+<br>
+
 
 
