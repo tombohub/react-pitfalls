@@ -59,4 +59,10 @@ When a child component needs some data from a parent, [pass it by props](https:/
 
 ---
 
+### 4 - *aria-** and *data-** keep their dash
 
+For historical reasons, [aria-*](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) and [data-*](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) attributes are written as in HTML with dashes.
+
+*source: https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things*
+
+---
