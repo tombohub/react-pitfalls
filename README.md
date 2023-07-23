@@ -1,6 +1,11 @@
 # React pitfalls
 Collection of react pitfalls as described in react documentation
 
+---
+<br>
+
+## Describing the UI
+
 <br>
 
 ## 1 - capitalize component name
@@ -150,5 +155,56 @@ Similarly, do not generate keys on the fly, e.g. with `key={Math.random()}`. Thi
 Note that your components won’t receive `key` as a prop. It’s only used as a hint by React itself. If your component needs an ID, you have to pass it as a separate prop: `<Profile key={id} userId={id} />`.
 
 *source: https://react.dev/learn/rendering-lists#why-does-react-need-keys*
+
+---
+
+<br>
+
+## Adding Interactivity
+
+<br>
+
+## 10 - pass a function, not call a function
+
+Functions passed to event handlers must be passed, not called. For example:
+
+| passing a function (correct) | calling a function (incorrect) |
+| --- | --- |
+| `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
+
+The difference is subtle. In the first example, the `handleClick` function is passed as an `onClick` event handler. This tells React to remember it and only call your function when the user clicks the button.
+
+In the second example, the `()` at the end of `handleClick()` fires the function _immediately_ during [rendering](https://react.dev/learn/render-and-commit), without any clicks. This is because JavaScript inside the [JSX `{` and `}`](https://react.dev/learn/javascript-in-jsx-with-curly-braces) executes right away.
+
+When you write code inline, the same pitfall presents itself in a different way:
+
+| passing a function (correct) | calling a function (incorrect) |
+| --- | --- |
+| `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
+
+Passing inline code like this won’t fire on click—it fires every time the component renders:
+
+```javascript
+// This alert fires when the component renders, not when clicked!<button onClick={alert('You clicked me!')}>
+```
+
+If you want to define your event handler inline, wrap it in an anonymous function like so:
+
+```javascript
+<button onClick={() => alert('You clicked me!')}>
+```
+
+Rather than executing the code inside with every render, this creates a function to be called later.
+
+In both cases, what you want to pass is a function:
+
+- `<button onClick={handleClick}>` passes the `handleClick` function.
+- `<button onClick={() => alert('...')}>` passes the `() => alert('...')` function.
+
+[Read more about arrow functions.](https://javascript.info/arrow-functions-basics)
+
+*source: https://react.dev/learn/responding-to-events#adding-event-handlers*
+
+<br>
 
 
