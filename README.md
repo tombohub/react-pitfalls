@@ -1,11 +1,12 @@
 # React pitfalls
 Collection of react pitfalls as described in react documentation
 
+---
 
 ### 1 - capitalize component name
 React components are regular JavaScript functions, but their names must start with a capital letter or they won’t work!
 
-*url: https://react.dev/learn/your-first-component*
+*url: https://react.dev/learn/your-first-component#step-2-define-the-function*
 
 ---
 
@@ -21,7 +22,7 @@ return (
 );
 ```
 
-*url: https://react.dev/learn/your-first-component*
+*url: https://react.dev/learn/your-first-component#step-3-add-markup*
 
 ---
 
@@ -54,6 +55,8 @@ function Profile() {
 
 When a child component needs some data from a parent, [pass it by props](https://react.dev/learn/passing-props-to-a-component) instead of nesting definitions.
 
+*url: https://react.dev/learn/your-first-component#nesting-and-organizing-components*
+
 ---
 
-### 
+
