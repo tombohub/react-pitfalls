@@ -207,4 +207,13 @@ In both cases, what you want to pass is a function:
 
 <br>
 
+## 11 - events propagation
+
+All events propagate in React except `onScroll`, which only works on the JSX tag you attach it to.
+
+*source: https://react.dev/learn/responding-to-events#event-propagation*
+
+<br>
+
+
 
