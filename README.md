@@ -112,3 +112,32 @@ For example, a common mistake is to write code like `messageCount && <p>New mess
 To fix it, make the left side a boolean: `messageCount > 0 && <p>New messages</p>`.
 
 *source: https://react.dev/learn/conditional-rendering#logical-and-operator-*
+
+<br>
+
+
+## 8 - explicit return in arrow functions
+
+Arrow functions implicitly return the expression right after `=>`, so you didn’t need a `return` statement:
+
+```javascript
+const listItems = chemists.map(person =>
+  <li>...</li> // Implicit return!
+);
+```
+
+However, **you must write `return` explicitly if your `=>` is followed by a `{` curly brace!**
+
+```javascript
+const listItems = chemists.map(person => { // Curly brace
+  return <li>...</li>;
+});
+```
+
+Arrow functions containing `=> {` are said to have a [“block body”.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body) They let you write more than a single line of code, but you _have to_ write a `return` statement yourself. If you forget it, nothing gets returned!
+
+*source: https://react.dev/learn/rendering-lists#filtering-arrays-of-items*
+
+<br>
+
+
