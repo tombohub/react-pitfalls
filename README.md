@@ -91,7 +91,10 @@ function Avatar({ person, size }) {  // ...}
 This syntax is called [“destructuring”](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Unpacking_fields_from_objects_passed_as_a_function_parameter) and is equivalent to reading properties from a function parameter:
 
 ```javascript
-function Avatar(props) {  let person = props.person;  let size = props.size;  // ...}
+function Avatar(props) {
+  let person = props.person;
+  let size = props.size;
+  // ...}
 ```
 
 *source: https://react.dev/learn/passing-props-to-a-component#step-2-read-props-inside-the-child-component*
