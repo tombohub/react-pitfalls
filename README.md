@@ -346,6 +346,44 @@ In both cases, the `App` component returns a `<div>` with `<Counter />` as a fir
 <br>
 
 
+## 17 - don't nest component functions definitions
+
+This is why you should not nest component function definitions.
+
+Here, the `MyTextField` component function is defined _inside_ `MyComponent`:
+
+```javascript
+import { useState } from 'react';
+
+export default function MyComponent() {
+  const [counter, setCounter] = useState(0);
+
+  function MyTextField() {
+    const [text, setText] = useState('');
+
+    return (
+      <input
+        value={text}
+        onChange={e => setText(e.target.value)}
+      />
+    );
+  }
+
+  return (
+    <>
+      <MyTextField />
+      <button onClick={() => {
+        setCounter(counter + 1)
+      }}>Clicked {counter} times</button>
+    </>
+  );
+}
+```
+
+Every time you click the button, the input state disappears! This is because a _different_ `MyTextField` function is created for every render of `MyComponent`. You’re rendering a _different_ component in the same position, so React resets all state below. This leads to bugs and performance problems. To avoid this problem, **always declare component functions at the top level, and don’t nest their definitions.**
+
+*source: https://react.dev/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state*
+
 
 
 
