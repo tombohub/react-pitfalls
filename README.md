@@ -224,5 +224,33 @@ All events propagate in React except `onScroll`, which only works on the JSX tag
 
 <br>
 
+## 13 - rendering must always be a pure calculation
+
+Rendering must always be a [pure calculation](https://react.dev/learn/keeping-components-pure):
+
+- **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. (When someone orders a salad with tomatoes, they should not receive a salad with onions!)
+- **It minds its own business.** It should not change any objects or variables that existed before rendering. (One order should not change anyone else’s order.)
+
+Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in “Strict Mode”, React calls each component’s function twice, which can help surface mistakes caused by impure functions.
+
+<br>
+
+
+## 14 - slice yes, splice no
+
+Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
+
+- `slice` lets you copy an array or a part of it.
+- `splice` **mutates** the array (to insert or delete items).
+
+In React, you will be using `slice` (no `p`!) a lot more often because you don’t want to mutate objects or arrays in state. [Updating Objects](https://react.dev/learn/updating-objects-in-state) explains what mutation is and why it’s not recommended for state.
+
+*source: https://react.dev/learn/updating-arrays-in-state#updating-arrays-without-mutation*
+
+<br>
+
+
+
+
 
 
