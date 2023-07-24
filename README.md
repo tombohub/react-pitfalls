@@ -257,6 +257,7 @@ In React, you will be using `slice` (no `p`!) a lot more often because you don�
 
 <br>
 
+
 ## 15 - update all fields in object state
 
 If your state variable is an object, remember that [you can’t update only one field in it](https://react.dev/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can’t do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
@@ -264,6 +265,86 @@ If your state variable is an object, remember that [you can’t update only one 
 *source: https://react.dev/learn/choosing-the-state-structure#group-related-state*
 
 <br>
+
+
+## 16 - position in UI tree is what matters
+
+Remember that **it’s the position in the UI tree—not in the JSX markup—that matters to React!** This component has two `return` clauses with different `<Counter />` JSX tags inside and outside the `if`:
+
+```javascript
+import { useState } from 'react';
+
+export default function App() {
+  const [isFancy, setIsFancy] = useState(false);
+  if (isFancy) {
+    return (
+      <div>
+        <Counter isFancy={true} />
+        <label>
+          <input
+            type="checkbox"
+            checked={isFancy}
+            onChange={e => {
+              setIsFancy(e.target.checked)
+            }}
+          />
+          Use fancy styling
+        </label>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Counter isFancy={false} />
+      <label>
+        <input
+          type="checkbox"
+          checked={isFancy}
+          onChange={e => {
+            setIsFancy(e.target.checked)
+          }}
+        />
+        Use fancy styling
+      </label>
+    </div>
+  );
+}
+
+function Counter({ isFancy }) {
+  const [score, setScore] = useState(0);
+  const [hover, setHover] = useState(false);
+
+  let className = 'counter';
+  if (hover) {
+    className += ' hover';
+  }
+  if (isFancy) {
+    className += ' fancy';
+  }
+
+  return (
+    <div
+      className={className}
+      onPointerEnter={() => setHover(true)}
+      onPointerLeave={() => setHover(false)}
+    >
+      <h1>{score}</h1>
+      <button onClick={() => setScore(score + 1)}>
+        Add one
+      </button>
+    </div>
+  );
+}
+```
+
+You might expect the state to reset when you tick checkbox, but it doesn’t! This is because **both of these `<Counter />` tags are rendered at the same position.** React doesn’t know where you place the conditions in your function. All it “sees” is the tree you return.
+
+In both cases, the `App` component returns a `<div>` with `<Counter />` as a first child. To React, these two counters have the same “address”: the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
+
+*source: https://react.dev/learn/preserving-and-resetting-state#same-component-at-the-same-position-preserves-state*
+
+<br>
+
 
 
 
