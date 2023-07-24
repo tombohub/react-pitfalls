@@ -249,6 +249,25 @@ In React, you will be using `slice` (no `p`!) a lot more often because you don�
 
 <br>
 
+---
+
+<br>
+
+## Managing State
+
+<br>
+
+## 15 - update all fields in object state
+
+If your state variable is an object, remember that [you can’t update only one field in it](https://react.dev/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can’t do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+
+*source: https://react.dev/learn/choosing-the-state-structure#group-related-state*
+
+<br>
+
+
+
+
 
 
 
