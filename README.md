@@ -384,6 +384,30 @@ Every time you click the button, the input state disappears! This is because a _
 
 *source: https://react.dev/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state*
 
+<br>
+
+## Escape Hatches
+
+<br>
+
+## 18 - careful with setting state in useEffect
+
+By default, Effects run after _every_ render. This is why code like this will **produce an infinite loop:**
+
+```javascript
+const [count, setCount] = useState(0);useEffect(() => {  setCount(count + 1);});
+```
+
+Effects run as a _result_ of rendering. Setting state _triggers_ rendering. Setting state immediately in an Effect is like plugging a power outlet into itself. The Effect runs, it sets the state, which causes a re-render, which causes the Effect to run, it sets the state again, this causes another re-render, and so on.
+
+Effects should usually synchronize your components with an _external_ system. If there’s no external system and you only want to adjust some state based on other state, [you might not need an Effect.](https://react.dev/learn/you-might-not-need-an-effect)
+
+*source: https://react.dev/learn/synchronizing-with-effects#step-1-declare-an-effect*
+
+<br>
+
+
+
 
 
 
