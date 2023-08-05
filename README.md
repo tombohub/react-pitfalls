@@ -406,13 +406,22 @@ Effects should usually synchronize your components with an _external_ system. If
 
 <br>
 
+## 19 - dependency array and behaviour of useEffect
 
+The behaviors without the dependency array and with an _empty_ `[]` dependency array are different:
 
+```javascript
+useEffect(() => {
+// This runs after every render
+});
 
+useEffect(() => {
+// This runs only on mount (when the component appears)
+}, []);
 
+useEffect(() => {
+// This runs on mount *  and also* if either a or b have changed since the last render
+}, [a, b]);
+```
 
-
-
-
-
-
+*source: https://react.dev/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies*
