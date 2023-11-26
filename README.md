@@ -425,3 +425,20 @@ useEffect(() => {
 ```
 
 *source: https://react.dev/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies*
+
+<br>
+
+## 20 - role of linter for useEffect dependency array
+
+The linter is your friend, but its powers are limited. The linter only knows when the dependencies are _wrong_. It doesn’t know _the best_ way to solve each case. If the linter suggests a dependency, but adding it causes a loop, it doesn’t mean the linter should be ignored. You need to change the code inside (or outside) the Effect so that that value isn’t reactive and doesn’t _need_ to be a dependency.
+
+If you have an existing codebase, you might have some Effects that suppress the linter like this:
+
+```
+useEffect(() => {  // ...  // 🔴 Avoid suppressing the linter like this:  // eslint-ignore-next-line react-hooks/exhaustive-deps}, []);
+```
+
+On the [next](https://react.dev/learn/separating-events-from-effects) [pages](https://react.dev/learn/removing-effect-dependencies), you’ll learn how to fix this code without breaking the rules. It’s always worth fixing!
+
+*source: https://react.dev/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize*
+
