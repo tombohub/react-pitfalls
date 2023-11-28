@@ -1,4 +1,4 @@
-# React pitfalls
+# React pitfalls v18.2.0
 Collection of react pitfalls as described in react documentation
 
 ---
