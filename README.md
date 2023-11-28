@@ -442,3 +442,22 @@ On the [next](https://react.dev/learn/separating-events-from-effects) [pages](ht
 
 *source: https://react.dev/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize*
 
+<br>
+
+## 21 - don't suppress the linter
+
+If you have an existing codebase, you might have some Effects that suppress the linter like this:
+
+```
+useEffect(() => {  // ...  // 🔴 Avoid suppressing the linter like this:  // eslint-ignore-next-line react-hooks/exhaustive-deps}, []);
+```
+
+**When dependencies don’t match the code, there is a very high risk of introducing bugs.** By suppressing the linter, you “lie” to React about the values your Effect depends on.
+
+Instead, use the techniques below.
+
+*source: https://react.dev/learn/removing-effect-dependencies#to-change-the-dependencies-change-the-code*
+
+<br>
+
+
